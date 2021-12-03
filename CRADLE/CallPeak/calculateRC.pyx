@@ -664,7 +664,7 @@ cpdef doFDRprocedure(args):
 			if idx == lastIdx:
 				if lastIdx == (windowNum - 1):
 					pastEnd = regionEnd
-					int(selectWindowVector[2]) = pastEnd
+					selectWindowVector[2] = pastEnd
 
 				selectWindowVector.extend([ np.min(pastPvalueSets) ])
 				selectWindowVector.extend([ np.min(pastQvalueSets) ])
