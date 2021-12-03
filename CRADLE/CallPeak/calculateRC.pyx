@@ -10,7 +10,6 @@ import statsmodels.sandbox.stats.multicomp
 
 from CRADLE.CallPeak import vari
 
-print(vari.OUTPUT_DIR, vari.CTRLBW_NUM, vari.EXPBW_NUM, vari.CTRLBW_NAMES, vari.EXPBW_NAMES, vari.ADJ_FDR, vari.SHIFTSIZE2, vari.BINSIZE2)
 
 cpdef getVariance(region):
 	warnings.filterwarnings('ignore', r'All-NaN slice encountered')

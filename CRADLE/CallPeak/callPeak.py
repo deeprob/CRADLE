@@ -8,6 +8,7 @@ import statsmodels.sandbox.stats.multicomp
 from CRADLE.CallPeak import vari
 from CRADLE.CallPeak import calculateRC
 
+print(vari.OUTPUT_DIR, vari.CTRLBW_NUM, vari.EXPBW_NUM, vari.CTRLBW_NAMES, vari.EXPBW_NAMES, vari.ADJ_FDR, vari.SHIFTSIZE2, vari.BINSIZE2)
 
 def mergePeaks(peakResult):
 	## open bigwig files to calculate effect size
