@@ -181,7 +181,7 @@ def takeMinusLog(values):
 	return 0 if np.isnan(minValue) else np.round((-1) * np.log10(minValue), 2)
 
 def getRCFromBWs(ctrlBW, expBW, regionChromo, regionStart, regionEnd):
-	ctrlRC = [np.nanmean(np.array(bw.values(regionChromo, regionStart, regionEnd))) for bw in ctrlWB]
+	ctrlRC = [np.nanmean(np.array(bw.values(regionChromo, regionStart, regionEnd))) for bw in ctrlBW]
 	expRC = [np.nanmean(np.array(bw.values(regionChromo, regionStart, regionEnd))) for bw in expBW]
 	
 	return ctrlRC, expRC
@@ -372,6 +372,7 @@ def run(args):
 	PValueSimes = []
 
 	### Apply the selected thata to the data
+	print("Applying theta to the data")
 	for subFileIdx in range(len(inputFile)):
 		subfileName = inputFile[subFileIdx].split()[0]
 		subfileStream = open(subfileName)
@@ -392,6 +393,7 @@ def run(args):
 
 
 	##### Selecting windows
+	print("Applying selecting windows")
 	taskCallPeak = []
 
 	inputFilename = metaFilename
@@ -465,6 +467,7 @@ def run(args):
 
 
 	######## WRITE A RESULT FILE
+	print("writing result file!!")
 	colNames = ["chr", "start", "end", "name", "score", "strand", "effectSize", "inputCount", "outputCount", "-log(pvalue)", "-log(qvalue)", "cohen's_d", "peusdoLog2FC"]
 	mergedPeaks = mergePeaks(peakResult)
 	finalResult, maxNegLogPValue, maxNegLogQValue = filterSmallPeaks(mergedPeaks)
