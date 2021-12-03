@@ -583,7 +583,7 @@ cpdef doFDRprocedure(args):
 
 			if lastIdx == (windowNum-1):
 				pastEnd = regionEnd
-				int(selectWindowVector[2]) = pastEnd
+				selectWindowVector[2] = pastEnd
 
 			ctrlRC = []
 			for rep in range(vari.CTRLBW_NUM):
@@ -617,13 +617,13 @@ cpdef doFDRprocedure(args):
 			currQvalue = QValueRegionBh[idx]
 
 			if (currStart >= pastStart) and (currStart <= pastEnd) and (pastEnrich == currEnrich):
-				int(selectWindowVector[2]) = currEnd
+				selectWindowVector[2] = currEnd
 				pastPvalueSets.extend([currPvalue])
 				pastQvalueSets.extend([currQvalue])
 
 			else:
 				### End a previous region
-				int(selectWindowVector[2]) = pastEnd
+				selectWindowVector[2] = pastEnd
 				selectWindowVector.extend([ np.min(pastPvalueSets) ])
 				selectWindowVector.extend([ np.min(pastQvalueSets) ])
 
