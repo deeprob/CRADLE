@@ -178,7 +178,7 @@ def mergePeaks(peakResult):
 def takeMinusLog(values):
 	minValue = np.min(values)
 
-	return 0 if np.isnan(minValue) else np.round((-1) * np.log10(minValue), 2)
+	return np.nan if minValue == 0 else np.round((-1) * np.log10(minValue), 2)
 
 def getRCFromBWs(ctrlBW, expBW, regionChromo, regionStart, regionEnd):
 	ctrlRC = [np.nanmean(np.array(bw.values(regionChromo, regionStart, regionEnd))) for bw in ctrlBW]
