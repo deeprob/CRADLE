@@ -583,17 +583,17 @@ cpdef doFDRprocedure(args):
 
 			if lastIdx == (windowNum-1):
 				pastEnd = regionEnd
-				selectWindowVector[2] = pastEnd
+				int(selectWindowVector[2]) = pastEnd
 
 			ctrlRC = []
 			for rep in range(vari.CTRLBW_NUM):
-				ctrlRC.append(ctrlBW[rep].values(selectWindowVector[0], selectWindowVector[1], selectWindowVector[2]))
+				ctrlRC.append(ctrlBW[rep].values(selectWindowVector[0], int(selectWindowVector[1]), int(selectWindowVector[2])))
 			ctrlRC = np.array(ctrlRC)
 			ctrlRCPosMean = np.mean(ctrlRC, axis=0)
 
 			expRC = []
 			for rep in range(vari.EXPBW_NUM):
-				expRC.append(expBW[rep].values(selectWindowVector[0], selectWindowVector[1], selectWindowVector[2]))
+				expRC.append(expBW[rep].values(selectWindowVector[0], int(selectWindowVector[1]), int(selectWindowVector[2])))
 			expRC = np.array(expRC)
 			expRCPosMean = np.mean(expRC, axis=0)
 
@@ -603,7 +603,7 @@ cpdef doFDRprocedure(args):
 			if diffPosNanNum == len(diffPos):
 				continue
 
-			subPeakStarts, subPeakEnds, subPeakDiffs = truncateNan(selectWindowVector[1], selectWindowVector[2], diffPos)
+			subPeakStarts, subPeakEnds, subPeakDiffs = truncateNan(int(selectWindowVector[1]), int(selectWindowVector[2]), diffPos)
 			writePeak(selectWindowVector, subPeakStarts, subPeakEnds, subPeakDiffs, subfile)
 
 			continue
@@ -617,25 +617,25 @@ cpdef doFDRprocedure(args):
 			currQvalue = QValueRegionBh[idx]
 
 			if (currStart >= pastStart) and (currStart <= pastEnd) and (pastEnrich == currEnrich):
-				selectWindowVector[2] = currEnd
+				int(selectWindowVector[2]) = currEnd
 				pastPvalueSets.extend([currPvalue])
 				pastQvalueSets.extend([currQvalue])
 
 			else:
 				### End a previous region
-				selectWindowVector[2] = pastEnd
+				int(selectWindowVector[2]) = pastEnd
 				selectWindowVector.extend([ np.min(pastPvalueSets) ])
 				selectWindowVector.extend([ np.min(pastQvalueSets) ])
 
 				ctrlRC = []
 				for rep in range(vari.CTRLBW_NUM):
-					ctrlRC.append(ctrlBW[rep].values(selectWindowVector[0], selectWindowVector[1], selectWindowVector[2]))
+					ctrlRC.append(ctrlBW[rep].values(selectWindowVector[0], int(selectWindowVector[1]), int(selectWindowVector[2])))
 				ctrlRC = np.array(ctrlRC)
 				ctrlRCPosMean = np.mean(ctrlRC, axis=0)
 
 				expRC = []
 				for rep in range(vari.EXPBW_NUM):
-					expRC.append(expBW[rep].values(selectWindowVector[0], selectWindowVector[1], selectWindowVector[2]))
+					expRC.append(expBW[rep].values(selectWindowVector[0], int(selectWindowVector[1]), int(selectWindowVector[2])))
 				expRC = np.array(expRC)
 				expRCPosMean = np.mean(expRC, axis=0)
 
@@ -653,7 +653,7 @@ cpdef doFDRprocedure(args):
 					pastEnrich = currEnrich
 					continue
 
-				subPeakStarts, subPeakEnds, subPeakDiffs = truncateNan(selectWindowVector[1], selectWindowVector[2], diffPos)
+				subPeakStarts, subPeakEnds, subPeakDiffs = truncateNan(int(selectWindowVector[1]), int(selectWindowVector[2]), diffPos)
 				writePeak(selectWindowVector, subPeakStarts, subPeakEnds, subPeakDiffs, subfile)
 
 				### Start a new region
@@ -664,20 +664,20 @@ cpdef doFDRprocedure(args):
 			if idx == lastIdx:
 				if lastIdx == (windowNum - 1):
 					pastEnd = regionEnd
-					selectWindowVector[2] = pastEnd
+					int(selectWindowVector[2]) = pastEnd
 
 				selectWindowVector.extend([ np.min(pastPvalueSets) ])
 				selectWindowVector.extend([ np.min(pastQvalueSets) ])
 
 				ctrlRC = []
 				for rep in range(vari.CTRLBW_NUM):
-					ctrlRC.append(ctrlBW[rep].values(selectWindowVector[0], selectWindowVector[1], selectWindowVector[2]))
+					ctrlRC.append(ctrlBW[rep].values(selectWindowVector[0], int(selectWindowVector[1]), int(selectWindowVector[2])))
 				ctrlRC = np.array(ctrlRC)
 				ctrlRCPosMean = np.mean(ctrlRC, axis=0)
 
 				expRC = []
 				for rep in range(vari.EXPBW_NUM):
-					expRC.append(expBW[rep].values(selectWindowVector[0], selectWindowVector[1], selectWindowVector[2]))
+					expRC.append(expBW[rep].values(selectWindowVector[0], int(selectWindowVector[1]), int(selectWindowVector[2])))
 				expRC = np.array(expRC)
 				expRCPosMean = np.mean(expRC, axis=0)
 
@@ -687,7 +687,7 @@ cpdef doFDRprocedure(args):
 				if diffPosNanNum == len(diffPos):
 					break
 
-				subPeakStarts, subPeakEnds, subPeakDiffs = truncateNan(selectWindowVector[1], selectWindowVector[2], diffPos)
+				subPeakStarts, subPeakEnds, subPeakDiffs = truncateNan(int(selectWindowVector[1]), int(selectWindowVector[2]), diffPos)
 				writePeak(selectWindowVector, subPeakStarts, subPeakEnds, subPeakDiffs, subfile)
 
 				break

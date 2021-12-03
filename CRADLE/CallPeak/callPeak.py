@@ -444,14 +444,15 @@ def run(args):
 		pool = multiprocessing.Pool(vari.NUMPROCESS)
 
 	print("problem starts here!")
+	resultCallPeak = pool.map_async(calculateRC.doFDRprocedure, taskCallPeak).get()
 
-	resultCallPeak = []  #pool.map_async(calculateRC.doFDRprocedure, taskCallPeak).get()
-	for tcp in taskCallPeak:
-		try:
-			rcp = calculateRC.doFDRprocedure(tcp)
-			resultCallPeak.append(rcp)
-		except RuntimeError:
-			print(tcp)
+	# resultCallPeak = []  
+	# for tcp in taskCallPeak:
+	# 	try:
+	# 		rcp = calculateRC.doFDRprocedure(tcp)
+	# 		resultCallPeak.append(rcp)
+	# 	except RuntimeError:
+	# 		print(tcp)
 			
 	pool.close()
 	pool.join()
