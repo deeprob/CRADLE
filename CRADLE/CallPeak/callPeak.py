@@ -431,7 +431,7 @@ def run(args):
 
 	inputStream.close()
 	os.remove(metaFilename)
-
+	print(len(taskCallPeak))
 	if len(taskCallPeak) == 0:
 		print("======= COMPLETED! ===========")
 		print("There is no peak detected in %s." % vari.OUTPUT_DIR)
