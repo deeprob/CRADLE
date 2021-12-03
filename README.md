@@ -15,17 +15,14 @@ Recommend to install the newest version.
 
 2) Using git repository
 ```
-git clone https://github.com/ReddyLab/CRADLE.git
+git clone https://github.com/deeprob/CRADLE.git
 make install
 ```
 
 or, alternatively
 
 ```
-git clone https://github.com/ReddyLab/CRADLE.git
-pip install build # If the 'build' package isn't already installed
-python -m build # Build cradle
-pip install dist/*.whl # Install cradle
+pip install git+https://github.com/deeprob/cradle
 ```
 
 ## Dependencies
