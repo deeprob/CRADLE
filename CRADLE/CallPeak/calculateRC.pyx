@@ -531,8 +531,6 @@ cpdef doFDRprocedure(args):
 	for regionIdx in selectRegionIdx:
 		regionInfo = inputFile[regionIdx].split()
 		regionChromo = regionInfo[0]
-		if type(int(regionInfo[1])) != int:
-			print(regionInfo[1])
 		regionStart = int(regionInfo[1])
 		regionEnd = int(regionInfo[2])
 		windowPvalue = list(map(float, regionInfo[5].split(",")))

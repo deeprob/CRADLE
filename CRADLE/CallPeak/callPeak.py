@@ -441,7 +441,7 @@ def run(args):
 		pool = multiprocessing.Pool(len(taskCallPeak))
 	else:
 		pool = multiprocessing.Pool(vari.NUMPROCESS)
-	resultCallPeak = pool.map_async(calculateRC.doFDRprocedure, taskCallPeak).get()
+	resultCallPeak = list(pool.map(calculateRC.doFDRprocedure, taskCallPeak)) #pool.map_async(calculateRC.doFDRprocedure, taskCallPeak).get()
 	pool.close()
 	pool.join()
 
